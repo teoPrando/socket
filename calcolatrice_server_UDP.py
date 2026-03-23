@@ -16,7 +16,7 @@ SERVER_PORT = 5005
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((SERVER_IP, SERVER_PORT))
-
+print(f"Server in asocolto sulla porta {SERVER_PORT} ...")
 while True:
     data, mittente= sock.recvfrom(1024)
     if not data:
@@ -28,5 +28,6 @@ while True:
     operazione=data["operazione"]
 
     sock.sendto(str(risultato(primo_numero,operazione,secondo_numero)).encode(), mittente)
+    print("Risultato inviato al client!")
 
 
